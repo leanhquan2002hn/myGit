@@ -1,0 +1,95 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content_checkout %}
+     <div class="row">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form">
+					<div id="user-info">
+						<div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Họ và tên">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="Số điện thoại" placeholder="Số điện thoại">
+						</div>
+					</div>
+					
+					<div id="shipping-info">
+						<hr>
+						<p>Thông tin giao hàng:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="Địa chỉ" placeholder="Địa chỉ...">
+						</div>
+						<div class="form-field">
+						<select class="form-control" name="phuong-thuc-thanh-toan" placeholder="phuong-thuc-thanh-toan">
+							<option value="" disabled selected>Phương thức thanh toán</option>
+							<option value="chuyen-khoan-ngan-hang">Chuyển khoản ngân hàng</option>
+							<option value="thanh-toan-khi-nhan-hang">Thanh toán khi nhận hàng</option>
+							<option value="Vi Momo"> Ví Momo</option>
+						</select>
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="email" placeholder="email">
+						</div>
+						<div class="form-field">
+						<select class="form-control" name="phuong-thuc-van-chuyen" placeholder="phuong-thuc-van-chuyen">
+							<option value="" disabled selected>Phương thức vận chuyển</option>
+							<option value="van-chuyen-nhanh">Chuyển nhanh</option>
+							<option value="chuyen-thuong">Chuyển thường</option>
+						</select>
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="Mã giảm giá" placeholder="Mã giảm giá...">
+						</div>
+					</div>
+
+					<hr>
+					<a id="form-button" class="btn btn-success btn-block" href="{% url 'home' %}">Thanh toán</a>
+				</form>
+			</div>
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<small>Paypal Options</small>
+				  <hr>
+				<p>Discount Code: <span id="discount-code"></span></p>
+			</div>
+			
+		</div>
+
+		<div class="col-lg-6">
+			<div class="box-element">
+				<a class="btn btn-outline-dark" href="{% url 'cart' %}" style="display: block; text-align: center;">&#x2190; Quay lại</a>
+				<div style="text-align: center;">
+					<span style="font-size: 20px;">Số sản phẩm: {{order.get_cart_items}}</span>
+					<span style="margin-left: 20px; font-size: 20px;">Tổng tiền: {{order.get_cart_total}}</span>
+				</div>
+				<hr>
+				<h3>Sản phẩm</h3>
+				<hr>
+				{% for item in items %}
+				<div class="cart-row">
+					<div style="flex:2"><img class="row-image" src="{{item.product.ImageURL}}"></div>
+					<div style="flex:2"><p>{{item.product.name_product}}</p></div>
+					<div style="flex:1"><p>{{item.product.price}}</p></div>
+					<div style="flex:1"><p>{{item.quantity}}</p></div>
+				</div>
+				{% endfor %}
+				<br/><br/><br/><br/>
+
+			</div>
+		</div>
+	</div>
+	<script>
+    document.getElementById('form-button').addEventListener('click', function(e) {
+        e.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+
+        alert('Đã đặt hàng thành công!'); // Hiển thị thông báo
+
+        setTimeout(function() {
+            window.location.href = document.getElementById('form-button').getAttribute('href'); // Chuyển hướng sau 1 giây
+        }, 1000);
+    });
+    </script>
+{% endblock content_checkout %}

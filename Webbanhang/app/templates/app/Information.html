@@ -1,0 +1,17 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block Information %}
+</head>
+<body>
+    <h1>Thông tin Người dùng</h1>
+    <div>
+        <p><strong>Tên người dùng:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Họ:</strong> {{ user.first_name }}</p>
+        <p><strong>Tên:</strong> {{ user.last_name }}</p>
+        <!-- Thêm các trường thông tin khác của người dùng nếu có -->
+    </div>
+</body>
+</html>
+{% endblock Information %}

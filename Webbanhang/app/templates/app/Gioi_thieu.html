@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+{% block Gioi_thieu %}
+    <head>
+        <title>Giới thiệu Shop</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Chào mừng đến với Shop của chúng tôi!</h1>
+
+            <div class="intro-text">
+                <p>Xin chào! Chúng tôi là cửa hàng chuyên cung cấp các sản phẩm chất lượng cao với giá cả hợp lý. Với nhiều năm kinh nghiệm trong ngành, chúng tôi tự hào mang đến cho khách hàng những sản phẩm đa dạng và độc đáo.</p>
+                <p>Chúng tôi cam kết chất lượng sản phẩm, dịch vụ tốt nhất và sự hài lòng của khách hàng là ưu tiên hàng đầu của chúng tôi.</p>
+            </div>
+
+            <div class="image-wrapper">
+                <img src="{% static 'app/images/processedcheeseslice.png' %}" alt="Shop Image">
+            </div>
+
+            <div class="contact-info">
+                <p>Địa chỉ: 123 Đường ABC, Thành phố XYZ</p>
+                <p>Điện thoại: 0123456789</p>
+                <p>Email: info@example.com</p>
+            </div>
+        </div>
+    </body>
+<br /><br /> 
+{% endblock Gioi_thieu %}
